@@ -221,7 +221,7 @@ namespace CommonDup
                     {
                         try
                         {
-                            filesInCommonPerProject = System.IO.Directory.GetFiles(Path.Combine(rootProjectPath.ToString(), (directoryName + PROJECT_COMMON)));
+                            filesInCommonPerProject = System.IO.Directory.GetFiles(Path.Combine(rootProjectPath.ToString(), (directoryName + PROJECT_COMMON)), "*.fbp6");
                         }
                         catch
                         {
