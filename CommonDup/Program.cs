@@ -212,6 +212,46 @@ namespace CommonDup
 
                     #endregion
 
+                    #region Editing fbp6 files in "Common_per_project" folder
+
+                    //Get list of files in "Common_per_project" folder
+                    string[] filesInCommonPerProject = null;
+
+                    if (result == true)
+                    {
+                        try
+                        {
+                            filesInCommonPerProject = System.IO.Directory.GetFiles(Path.Combine(rootProjectPath.ToString(), (directoryName + PROJECT_COMMON)));
+                        }
+                        catch
+                        {
+                            Console.WriteLine("Could not get list of files in Common_per_project folder. ");
+                            result = false;
+                        }
+                    }
+
+                    //Replace links to "Common" location in Common_per_project *.fbp6 files
+                    if (result == true)
+                    {
+                        try
+                        {
+                            string PROJECT_AND_CUSTOM_COMMON_PATH = PROJECTS_PATH + directoryName + PROJECT_COMMON;
+                            string PROJECT_AND_GENERAL_COMMON_PATH = PROJECTS_PATH + directoryName + GENERAL_COMMON;
+
+                            foreach (string fileNameToFixInnerInfo in filesInCommonPerProject)
+                            {
+                                ReplaceInFile(fileNameToFixInnerInfo, GENERAL_COMMON_PATH, PROJECT_AND_CUSTOM_COMMON_PATH);
+                                ReplaceInFile(fileNameToFixInnerInfo, PROJECT_AND_GENERAL_COMMON_PATH, PROJECT_AND_CUSTOM_COMMON_PATH);
+                            }
+                        }
+                        catch
+                        {
+                            Console.WriteLine("Could not change values in *.fbp6 files in " + fullDirectoryName);
+                            result = false;
+                        }
+                    }
+                    #endregion
+
                     #region Fixing "FBProjectRemoteExecution.fbz6" to "FBProjectRemoteExecution.fbp6"
 
                     string[] fileListToFixFbz6Issue = null;
