@@ -313,6 +313,7 @@ namespace CommonDup
 
         }
 
+        //Main
         static int Main(string[] args)
         {
             if (Duplicate(args[0], args[1]))
