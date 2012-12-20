@@ -313,7 +313,7 @@ namespace CommonDup
 
         }
 
-        //Main (Duplicate function is executed from here) (test entry 01) (test entry 02)
+        //Main (Duplicate function is executed from here) (test entry 01) (test entry 02) (test entry 03 - on other branch)
         static int Main(string[] args)
         {
             if (Duplicate(args[0], args[1]))
